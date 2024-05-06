@@ -11,14 +11,15 @@ export default function account() {
 
   const [details,setDetails]=useState([]);
   const logininfo = async()=>{
+   let [details,setDetails]=useState([]);
+  const logininfo = async()=>{
     const tok= localStorage.getItem("token");
     return fetch("http://localhost:8080/logOutroute/getapi?userId="+tok)
 
       .then((res:any)=>res.json())
-      .then((d)=>setDetails(d));      })
-      
-      .catch((err)=> console.error(err));
+      .then((d)=>setDetails(d));
   }
+  
   
   return (
     <div>
