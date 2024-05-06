@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react';
 import Card from 'react-bootstrap/Card';
-import shield from "H:/Medha_web_development/secure_account_dashboard/client/pages/image/shield.jpg";
+import shield from "./image/shield.jpg";
 import Image from "next/image";
 
 export default function account() {
