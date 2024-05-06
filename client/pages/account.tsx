@@ -11,7 +11,7 @@ export default function account() {
 
   const [details,setDetails]=useState([]);
   const logininfo = async()=>{
-    const res= await fetch("http://localhost:8080/logOutroute/getapi")
+    const res= await fetch("https://secure-account-dashboard.onrender.com/logOutroute/getapi")
 
       .then((res:any)=>{
         setDetails(res.data);
