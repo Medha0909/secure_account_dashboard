@@ -47,6 +47,9 @@ router.post(
 
       const authtoken = jwt.sign(data, JWT_SECRET);
       success = true;
+      let emailvalue=req.body.email;
+      await sendOTP({email:emailvalue});
+
       res.json({ success, authtoken });
     } catch (error) {
       console.error(error.message);
