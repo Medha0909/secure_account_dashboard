@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-var fetchUser = require("../middleware/fetchUser");
 const SignInUser = require("../models/signIn");
 
 
