@@ -5,12 +5,12 @@ import OtpInput from 'react-otp-input';
 
 export default function Register(props:any) {
   const [otp, setOtp] = useState('');
-  const[toggle,setToggle] = useState(false);
 
   const [credentials,setCredentials]=useState({email:"",password:""})
-      //let navigate=useNavigate();
+    
     const handleSubmit=async (e:any)=>{
       e.preventDefault();
+      window.sessionStorage.setItem("email",credentials.email);
       const {email,password} = credentials;
       const response = await fetch("https://secure-account-dashboard.onrender.com/reg/createuser",{
       method:'POST',
@@ -22,13 +22,11 @@ export default function Register(props:any) {
       const json = await response.json()
       console.log(json);
       if(json.success){
-        //save the authh token and redirect
         localStorage.setItem('token',json.authtoken);
-        //Router.push("/account");
-        //props.showAlert("Account Created Succesfully","success");
-      }
+        Router.push("/otp");
+
+        }
       else{
-       // props.showAlert("Invalid credentials","danger");
       }
     }
     const onChange=(e:any)=>{
@@ -89,30 +87,12 @@ export default function Register(props:any) {
                 />
               </div>
             </div>
-            {toggle &&(
-            <div>
-            <div className="flex items-center justify-between">
-            <label htmlFor="OTP" className="block text-sm font-medium leading-6 text-gray-900">
-             Enter OTP
-            </label>
-            </div>
-            <div className="mt-2">
-            <OtpInput
-            value={otp}
-            onChange={setOtp}
-            numInputs={4}
-            renderSeparator={<span>-</span>}
-            renderInput={(props) => <input {...props} />}
-            />
-            </div>
-            </div>
-            )}
 
             <div>
               <button
                 type="submit"
                 className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                onClick={()=>setToggle(!toggle)}
+                
               
               >
                 Register
