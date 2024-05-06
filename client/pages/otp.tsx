@@ -11,7 +11,7 @@ export default function otp(props:any) {
     const handleSubmit=async (e:any)=>{
       e.preventDefault();
       const email = window.sessionStorage.getItem("email");      
-      const response:any = await fetch("http://localhost:8080/otproutes/verify",{
+      const response:any = await fetch("https://secure-account-dashboard.onrender.com/otproutes/verify",{
       method:'POST',
         headers:{
           'Content-Type': 'application/json'
