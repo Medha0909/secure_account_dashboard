@@ -1,4 +1,26 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-  
+
+.he1{
+    margin-top:"3rem";
+    margin-left:"39rem";
+    width:"7rem";
+    height:"2rem";
+}
+
+  .heading{
+    font-size:"2rem";
+     margin-top:"2rem";
+     margin-left:"30rem"
+  }
+
+.a1{
+    margin-left: 8rem;
+}
+
+@media(max-width: 1115px){
+    .a1{
+        margin-left: 7rem;
+    }
+}
