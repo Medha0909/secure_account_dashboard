@@ -11,39 +11,54 @@ export default function account() {
 
   const [details,setDetails]=useState([]);
   const logininfo = async()=>{
-    const res= await fetch("https://secure-account-dashboard.onrender.com/logOutroute/getapi")
+    const tok= localStorage.getItem("token");
+    return fetch("http://localhost:8080/logOutroute/getapi?userId="+tok)
 
-      .then((res:any)=>{
-        setDetails(res.data);
-        console.log(details);
-      })
+      .then((res:any)=>res.json())
+      .then((d)=>setDetails(d));      })
       
       .catch((err)=> console.error(err));
   }
   
   return (
     <div>
-      <Image  className="he1" style={{marginTop:"3rem",marginLeft:"39rem",width:"7rem",height:"7rem"}} src={shield} alt="shield_image" />
-      <h1 className="heading" style={{fontSize:"2rem", marginTop:"2rem",marginLeft:"30rem"}}>Manage Access and Devices</h1>
-      <p style={{marginTop:"1rem",marginLeft:"25rem",marginRight:"25rem"}}>These signed-in devices have recently been ative on this account.You can sign out any unfamiliar devices.</p>
+<div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+        <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+          <Image
+            className="mx-auto h-20 w-auto"
+            src={shield}
+            alt="shield_image"
+          />
+          <h1 className="mt-3 text-center text-3xl font-medium leading-9 tracking-tight text-gray-900">
+          Manage Access and Devices
+          </h1>
+        </div>
 
-    
-    <div style={{border: "1px solid #999", marginLeft:"20rem",boxShadow:"0 2px 3px #888888", marginTop:"5rem", width:"300px"}}>
-      <div style={{marginTop:"0.5rem",marginLeft:"1rem"}}>
-    <Card style={{ width: '18rem' }}>
-      <Card.Body>
-        <Card.Title><b>Device Information</b>  <button style={{ marginLeft: '3rem',border: "1px solid #999"}}><h4 style={{marginLeft:"5px",marginRight:"5px"}}>Sign Out</h4></button></Card.Title>
+        <div className=" mt-3 text-center text-1xl font-small leading-9 tracking-tight text-gray-900">
+        <p>These signed-in devices have recently been active on this account.You can sign out any unfamiliar devices.</p>
+        </div>
 
-        <Card.Text className="mb-2 text-muted">No profile to show</Card.Text>
-        <Card.Text>
-          LogIn time
-        </Card.Text>
-        
-          </Card.Body>
-    </Card>
-    </div>
-    </div>
-    
+      <div className="ml-5 relative flex flex-col mt-6 text-gray-700 bg-white shadow-md bg-border w-96">
+  <div className="p-6">
+    <h5 className="block mr=10 mb-2 font-sans text-m antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+      Device Information
+    <button
+      className=" ml-20 align-middle select-none font-sans font-small text-center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-2xs py-3 px-6 shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none"
+      type="button">
+       Sign Out
+    </button>
+    </h5>
+    <p className="block text-xs font-sans text-base font-bold antialiased font-light leading-relaxed text-inherit">
+    No profile to show
+    </p>
+
+    <p className="block text-xs font-sans text-base font-bold antialiased font-light leading-relaxed text-inherit">
+    Login Time
+    </p>
+  </div>
+  
+</div>
+  </div>    
   
     </div>
   )
