@@ -12,7 +12,7 @@ export default function Register(props:any) {
     const handleSubmit=async (e:any)=>{
       e.preventDefault();
       const {email,password} = credentials;
-      const response = await fetch("http://localhost:8080/reg/createuser",{
+      const response = await fetch("https://secure-account-dashboard.onrender.com/reg/createuser",{
       method:'POST',
         headers:{
           'Content-Type': 'application/json'
